@@ -1,0 +1,29 @@
+{
+  "name": "plott-mongo",
+  "version": "0.0.1",
+  "description": "Creates connection, database and all necessary collections, indexes and models used by Plott.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape tests/*.js",
+    "doc": "dox -r < index.js | doxme --readme > README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plott/plott-mongo.git"
+  },
+  "keywords": [
+    "plott",
+    "mongodb"
+  ],
+  "author": "Corey White",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Plott/plott-mongo/issues"
+  },
+  "homepage": "https://github.com/Plott/plott-mongo#readme",
+  "devDependencies": {
+    "tape": "~3.5.0",
+    "dox": "^0.7.1",
+    "doxme": "^1.8.2"
+  }
+}
