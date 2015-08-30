@@ -25,5 +25,8 @@
     "tape": "~3.5.0",
     "dox": "^0.7.1",
     "doxme": "^1.8.2"
+  },
+  "dependencies": {
+    "mongoose": "^4.1.3"
   }
 }
