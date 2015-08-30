@@ -1,13 +1,38 @@
-var qualityDistance = require('../'),
+var mongo = require('../'),
     test = require('tape');
 
-    test('distance', function (t){
-      var distance = qualityDistance(-75, 400);
-      t.equal(distance, 200, 'value ok');
+    test('mongo', function (t){
+      var mongoose = mongo();
+      t.equal(mongoose.connection.readyState, 2, 'connection ok');
+      mongoose.connection.close(function(err){
+        if (err) throw new Error (err);
+      });
 
-      t.throws(function(){
-        qualityDistance(-93, 'dog');
-      }, 'Integer Required');
+
+      mongoose = mongo('mongodb://localhost', 'Plott_Test')
+      t.equal(mongoose.connection.readyState, 2, 'connection ok');
+      mongoose.connection.close(function(err){
+        if (err) throw new Error (err);
+      });
+
+      mongoose = mongo('mongodb://localhost/', 'Plott_Test1')
+      t.equal(mongoose.connection.readyState, 2, 'connection ok');
+      mongoose.connection.close(function(err){
+        if (err) throw new Error (err);
+      });
+
+      mongoose = mongo('mongodb://localhost/')
+      t.equal(mongoose.connection.readyState, 2, 'connection ok');
+      mongoose.connection.close(function(err){
+        if (err) throw new Error (err);
+      });
+
+      mongoose = mongo('dog')
+      t.equal(mongoose.connection.readyState, 2, 'connection ok');
+      mongoose.connection.close(function(err){
+        if (err) throw new Error (err);
+      });
+
 
       t.end();
     });

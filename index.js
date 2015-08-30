@@ -15,10 +15,23 @@ var mongoose = require('mongoose'),
  * //=mongoose
  */
 
+ if (!String.prototype.endsWith) {
+  String.prototype.endsWith = function(searchString, position) {
+      var subjectString = this.toString();
+      if (position === undefined || position > subjectString.length) {
+        position = subjectString.length;
+      }
+      position -= searchString.length;
+      var lastIndex = subjectString.indexOf(searchString, position);
+      return lastIndex !== -1 && lastIndex === position;
+  };
+}
+
  module.exports = function (conn, db) {
    var connection;
+   if (mongoose.connection.readyState === 2){ return mongoose; };
    conn = conn === undefined ? 'mongodb://localhost/' : conn;
    db = db === undefined ? 'Plott' : db;
-   connection = path.join(conn, db);
-   return mongoose.connect(connection).bind(mongoose);
+   connection = conn.endsWith('/') ?  conn.concat(db) : conn.concat('/', db);
+   return mongoose.connect(connection);
 }

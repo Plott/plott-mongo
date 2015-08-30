@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/Plott/plott-mongo#readme",
   "devDependencies": {
-    "tape": "~3.5.0",
     "dox": "^0.7.1",
-    "doxme": "^1.8.2"
+    "doxme": "^1.8.2",
+    "tape": "~3.5.0"
   },
   "dependencies": {
     "mongoose": "^4.1.3"
